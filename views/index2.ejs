@@ -1,0 +1,42 @@
+<html>
+  <body>
+    <p>Click on excat location button to get your location</p>
+    <button onclick="getPreciseLocation()" >Precise Location</button>
+    <p id="location">Click Above button to get your Lat Long</p>
+    <script>
+      var x = document.getElementById("location");
+      function getPreciseLocation(){
+        if (navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(showExcatPosition);
+          
+        } else {
+          x.innerHTML = "Geolocation is not supported"
+        }
+
+      }
+
+      function showExcatPosition(position){
+        // x.innerHTML = 
+        let lat1 = position.coords.latitude;
+        let lon1 = position.coords.longitude;
+        let location = "lattitude:" + position.coords.latitude + "<br>Longitude: " + position.coords.longitude
+        x.innerHTML = location;
+        console.log ("lattitude:" + position.coords.latitude + "<br>Longitude: " + position.coords.longitude)
+        
+      }
+
+    </script>
+    <form id="mForm" method="post">
+
+      <label for="idInput">lattitude:</label>
+      <input type="text" id="latInput" name="id">
+
+      <label for="idInput">Longitude:</label>
+      <input type="text" id="longInput" name="id">
+    
+      <label for="submit"></label>
+      <input id="post" type="submit" value="Get Tomorrow's Rain Forecast" formaction="/submit">
+      
+    </form>
+  </body>
+</html>
